@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springcloud.dao.PaymentDao">
+
+    <insert id="create" parameterType="com.atguigu.springcloud.entities.Payment" useGeneratedKeys="true" keyProperty="id">
+        INSERT into payment(serial) VALUES (#{serial});
+    </insert>
+
+    <!--对象映射，column是数据库字段，property是实体对象字段-->
+    <resultMap type="com.atguigu.springcloud.entities.Payment" id="BaseResultMap">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="serial" column="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPaymentById" parameterType="long" resultMap="BaseResultMap">
+        SELECT  * from payment where id=#{id}
+    </select>
+</mapper>
