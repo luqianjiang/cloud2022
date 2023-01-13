@@ -14,7 +14,7 @@ public class FlowLimitController
 
     @GetMapping("/testB")
     public String testB() {
-
+        System.out.println("test");
         return "------testB";
     }
 
